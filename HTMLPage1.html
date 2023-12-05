@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form name="search">
+        <input type="text" name="key"></input>
+        <input type="submit" name="send" value="Отправить" />
+    </form>
+    <script>
+        function sendForm(e) {
+
+            const keyBox = document.search.key;
+            const val = keyBox.value;
+            if (val.length < 3) {
+                alert("Недопустимая длина строки");
+                e.preventDefault();
+            }
+            else
+                alert("Отправка разрешена");
+        }
+
+        const sendButton = document.search.send;
+        sendButton.addEventListener("click", sendForm);
+    </script>
+
+    <script language="javascript">
+        var selected_state;
+
+        function ckswapText(obj) {
+            selected_state = obj.value;
+
+            if (selected_state == "")
+                return;
+
+            if (selected_state == "AZ")
+                changeText();
+            else if (selected_state == "CA")
+                swapText3();
+            else if (selected_state == "CO")
+                swapText4();
+            else
+                olswapText();
+        }
+
+        function changeText() {
+            document.getElementById('boldStuff').innerHTML = 'порода собак';
+        }
+
+        function swapText3() {
+            document.getElementById('boldStuff').innerHTML = 'порода кошек';
+        }
+
+        function swapText4() {
+            document.getElementById('boldStuff').innerHTML = 'порода кроликов';
+        }
+        function olswapText() {
+            document.getElementById('boldStuff').innerHTML = 'порода лошадей';
+        }
+    </script>
+
+    <select class="apply_text" size="1" name="billto_state" id="billto_state" onchange="ckswapText(this);">
+        <option value="" selected>Алабай</option>
+        <option value="AL">Буденновская порода</option>
+        <option value="AK">Алтайская порода</option>
+        <option value="AZ">Австралийская овчарка</option>
+        <option value="AR">Австралийский Пони</option>
+        <option value="CA">Турецкая ангора</option>
+        <option value="CO">Огневка</option>
+        <option value="WY">Бурятская порода</option>
+    </select>
+    <p>
+        Это <b id='boldStuff'>порода собак</b>
+    </p>
+</body>
+</html>
